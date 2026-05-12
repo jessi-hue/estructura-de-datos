@@ -5,14 +5,12 @@ public class Lista {
         this.inicio = null;
     }
 
-    // Insertar al inicio
     public void insertarInicio(int id, String nom, double gastos) {
         Nodo nuevo = new Nodo(id, nom, gastos);
         nuevo.siguiente = inicio;
         inicio = nuevo;
     }
 
-    // Insertar al final
     public void insertarFinal(int id, String nom, double gastos) {
         Nodo nuevo = new Nodo(id, nom, gastos);
         if (inicio == null) {
@@ -26,7 +24,6 @@ public class Lista {
         }
     }
 
-    // Buscar por ID
     public Nodo buscar(int id) {
         Nodo temp = inicio;
         while (temp != null) {
@@ -38,7 +35,6 @@ public class Lista {
         return null;
     }
 
-    // Modificar gastos
     public boolean modificarGastos(int id, double nuevosGastos) {
         Nodo candidato = buscar(id);
         if (candidato != null) {
@@ -48,7 +44,6 @@ public class Lista {
         return false;
     }
 
-    // Eliminar
     public boolean eliminar(int id) {
         if (inicio == null) return false;
         if (inicio.identificacion == id) {
@@ -66,7 +61,6 @@ public class Lista {
         return false;
     }
 
-    // Imprimir lista
     public void imprimir() {
         Nodo temp = inicio;
         while (temp != null) {

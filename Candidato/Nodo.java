@@ -4,9 +4,9 @@ public class Nodo {
     double gastosCampana;
     Nodo siguiente;
 
-    public Nodo(int id, String nom, double gastos) {
+    public Nodo(int id, String nombre, double gastos) {
         this.identificacion = id;
-        this.nombre = nom;
+        this.nombre = nombre;
         this.gastosCampana = gastos;
         this.siguiente = null;
     }

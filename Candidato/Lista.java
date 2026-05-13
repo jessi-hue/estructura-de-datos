@@ -1,36 +1,36 @@
 public class Lista {
-    Nodo inicio;
+    private Nodo inicio;
 
     public Lista() {
         this.inicio = null;
     }
 
-    public void insertarInicio(int id, String nom, double gastos) {
-        Nodo nuevo = new Nodo(id, nom, gastos);
+    public void insertarInicio(int id, String nombre, double gastos) {
+        Nodo nuevo = new Nodo(id, nombre, gastos);
         nuevo.siguiente = inicio;
         inicio = nuevo;
     }
 
-    public void insertarFinal(int id, String nom, double gastos) {
-        Nodo nuevo = new Nodo(id, nom, gastos);
+    public void insertarFinal(int id, String nombre, double gastos) {
+        Nodo nuevo = new Nodo(id, nombre, gastos);
         if (inicio == null) {
             inicio = nuevo;
         } else {
-            Nodo temp = inicio;
-            while (temp.siguiente != null) {
-                temp = temp.siguiente;
+            Nodo actual = inicio;
+            while (actual.siguiente != null) {
+                actual = actual.siguiente;
             }
-            temp.siguiente = nuevo;
+            actual.siguiente = nuevo;
         }
     }
 
     public Nodo buscar(int id) {
-        Nodo temp = inicio;
-        while (temp != null) {
-            if (temp.identificacion == id) {
-                return temp;
+        Nodo actual = inicio;
+        while (actual != null) {
+            if (actual.identificacion == id) {
+                return actual;
             }
-            temp = temp.siguiente;
+            actual = actual.siguiente;
         }
         return null;
     }
@@ -45,27 +45,35 @@ public class Lista {
     }
 
     public boolean eliminar(int id) {
-        if (inicio == null) return false;
+        if (inicio == null) {
+            return false;
+        }
         if (inicio.identificacion == id) {
             inicio = inicio.siguiente;
             return true;
         }
-        Nodo temp = inicio;
-        while (temp.siguiente != null) {
-            if (temp.siguiente.identificacion == id) {
-                temp.siguiente = temp.siguiente.siguiente;
+        Nodo actual = inicio;
+        while (actual.siguiente != null) {
+            if (actual.siguiente.identificacion == id) {
+                actual.siguiente = actual.siguiente.siguiente;
                 return true;
             }
-            temp = temp.siguiente;
+            actual = actual.siguiente;
         }
         return false;
     }
 
     public void imprimir() {
-        Nodo temp = inicio;
-        while (temp != null) {
-            System.out.println("ID: " + temp.identificacion + ", Nombre: " + temp.nombre + ", Gastos: " + temp.gastosCampana);
-            temp = temp.siguiente;
+        Nodo actual = inicio;
+        while (actual != null) {
+            System.out.println("ID: " + actual.identificacion +
+                             ", Nombre: " + actual.nombre +
+                             ", Gastos: " + actual.gastosCampana);
+            actual = actual.siguiente;
         }
+    }
+
+    public boolean estaVacia() {
+        return inicio == null;
     }
 }
